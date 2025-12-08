@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="PARALLEL_COMPILATION_OPTION" value="Enabled" />
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloudConfig" />
+        <module name="eureka" />
+        <module name="gateway" />
+      </profile>
+      <profile name="Annotation profile for userService" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.42/lombok-1.18.42.jar" />
+        </processorPath>
+        <module name="aiService" />
+        <module name="activityService" />
+        <module name="userService" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="activity" target="21" />
+      <module name="configServer" target="21" />
+      <module name="ConfigServier" target="1.5" />
+      <module name="user" target="21" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="activity" options="-parameters" />
+      <module name="activityService" options="-parameters" />
+      <module name="aiService" options="-parameters" />
+      <module name="cloudConfig" options="-parameters" />
+      <module name="configServer" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="user" options="-parameters" />
+      <module name="userService" options="-parameters" />
+    </option>
+  </component>
+</project>
