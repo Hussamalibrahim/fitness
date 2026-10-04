@@ -1,8 +1,11 @@
 package com.h2lib.user.service;
 
+import com.h2lib.user.model.User;
 import com.h2lib.user.model.dto.LoginRequest;
 import com.h2lib.user.model.dto.RegisterRequest;
 import com.h2lib.user.model.dto.UserDto;
+
+import java.util.Optional;
 
 public interface UserService {
 
@@ -13,4 +16,6 @@ public interface UserService {
     UserDto getUserProfile(Long userId);
 
     Boolean userValidate(Long userId);
+
+    Long findByKeycloakId(String keycloakId);
 }

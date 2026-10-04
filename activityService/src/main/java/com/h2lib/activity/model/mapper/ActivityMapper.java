@@ -10,7 +10,6 @@ public class ActivityMapper {
     public static Activity convertToEntity(ActivityRequest activityRequest){
         Activity activity = new Activity();
 
-        activity.setUserId(activityRequest.getUserId());
         activity.setTypeActivity(activityRequest.getTypeActivity());
         activity.setDuration(activityRequest.getDuration());
         activity.setCaloriesBurned(activityRequest.getCaloriesBurned());

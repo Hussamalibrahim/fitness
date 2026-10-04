@@ -23,8 +23,10 @@ public class ActivityAiServiceImp implements ActivityAiService {
     private final GeminiServiceImp geminiServiceImp;
 
     public Recommendation geminiRecommendation(Activity activity) {
+
         String prompt = creatNewPromptForActivity(activity);
         String aiAnswer = geminiServiceImp.getAnswer(prompt);
+
         log.info("Response from AI = {}", aiAnswer);
         return processAiResponse(activity, aiAnswer);
     }

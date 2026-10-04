@@ -61,4 +61,11 @@ public class UserServiceImp implements UserService {
     public Boolean userValidate(Long userId) {
         return userRepository.existsById(userId);
     }
+
+
+    public Long findByKeycloakId(String keycloakId) {
+        User user = userRepository.findByKeycloakId(keycloakId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        return user.getId();
+    }
 }

@@ -1,0 +1,783 @@
+{
+  "info": {
+    "_postman_id": "37e9dce2-3122-4d62-971e-058773d1ff94",
+    "name": "fitness",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42475676",
+    "_collection_link": "https://go.postman.co/collection/42475676-37e9dce2-3122-4d62-971e-058773d1ff94?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"create@gmail.com\",\r\n  \"password\": \"123456789\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "user",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"tset\",\r\n  \"email\": \"tsewtt@gmail.com\",\r\n  \"password\": \"1234553\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8081/api/user/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "user",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/user/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "user",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "user validate",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8081/api/user/2/validate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8081",
+              "path": [
+                "api",
+                "user",
+                "2",
+                "validate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "activity",
+      "item": [
+        {
+          "name": "add Activity",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userId\": 1,\r\n  \"typeActivity\": \"SWIMMING\",\r\n  \"duration\": 3,\r\n  \"caloriesBurned\": 4,\r\n  \"timeStart\": \"\",\r\n  \"additionalMatrices\": {\r\n    \"x\": 10,\r\n    \"y\": 20\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8082/api/activity/add",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "activity",
+                "add"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get Activities",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/activity/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "activity",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search by userId",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-USER-ID",
+                "value": "2",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8082/api/activity",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "activity"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "search by activity id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8082/api/activity/69287b6220b2a8c47bc44f3d",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8082",
+              "path": [
+                "api",
+                "activity",
+                "69287b6220b2a8c47bc44f3d"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Gemini",
+      "item": [
+        {
+          "name": "Test Gemini",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-goog-api-key",
+                "value": "$GEMINI_API_KEY"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"contents\": [\r\n      {\r\n        \"parts\": [\r\n          {\r\n            \"text\": \"Explain how AI works in a few words\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=",
+              "protocol": "https",
+              "host": [
+                "generativelanguage",
+                "googleapis",
+                "com"
+              ],
+              "path": [
+                "v1beta",
+                "models",
+                "gemini-2.5-flash:generateContent"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": ""
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl \"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent\" \\\r\n  -H \"x-goog-api-key: $GEMINI_API_KEY\" \\\r\n  -H 'Content-Type: application/json' \\\r\n  -X POST \\\r\n  -d '{\r\n    \"contents\": [\r\n      {\r\n        \"parts\": [\r\n          {\r\n            \"text\": \"Explain how AI works in a few words\"\r\n          }\r\n        ]\r\n      }\r\n    ]\r\n  }'"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ai recommendation",
+      "item": [
+        {
+          "name": "get user recommendation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/recommendation/user/2",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "recommendation",
+                "user",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get activity by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/recommendation/activity/691f23189ff1c4e4595150cc",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "recommendation",
+                "activity",
+                "691f23189ff1c4e4595150cc"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8083/api/recommendation/all",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8083",
+              "path": [
+                "api",
+                "recommendation",
+                "all"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "item": [
+        {
+          "name": "activity-service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8888/activity-service/defult",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8888",
+              "path": [
+                "activity-service",
+                "defult"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "user-service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8888/user-service/defult",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8888",
+              "path": [
+                "user-service",
+                "defult"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ai-service",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8888/ai-service/defult",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8888",
+              "path": [
+                "ai-service",
+                "defult"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "gateway",
+      "item": [
+        {
+          "name": "user",
+          "item": [
+            {
+              "name": "login",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"tset@gmail.com\",\r\n  \"password\": \"1234553\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/user/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "user",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "register",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": \"tset\",\r\n  \"email\": \"tset@gmail.com\",\r\n  \"password\": \"1234553\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/user/register",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "user",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get profile",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/user/1",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "user",
+                    "1"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "user validate",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/user/2/validate",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "user",
+                    "2",
+                    "validate"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "activity",
+          "item": [
+            {
+              "name": "add Activity",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"userId\": 1,\r\n  \"typeActivity\": \"SWIMMING\",\r\n  \"duration\": 3,\r\n  \"caloriesBurned\": 4,\r\n  \"timeStart\": \"\",\r\n  \"additionalMatrices\": {\r\n    \"x\": 10,\r\n    \"y\": 20\r\n  }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/activity/add",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "activity",
+                    "add"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get Activities",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/activity/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "activity",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "search by userId",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-USER-ID",
+                    "value": "2",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "http://localhost:8080/api/activity",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "activity"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "search by activity id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/activity/69287b6220b2a8c47bc44f3d",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "activity",
+                    "69287b6220b2a8c47bc44f3d"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "ai recommendation",
+          "item": [
+            {
+              "name": "get user recommendation",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/recommendation/user/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "recommendation",
+                    "user",
+                    "2"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get activity by id",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8083/api/recommendation/activity/691f23189ff1c4e4595150cc",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8083",
+                  "path": [
+                    "api",
+                    "recommendation",
+                    "activity",
+                    "691f23189ff1c4e4595150cc"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "get all",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/recommendation/all",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "recommendation",
+                    "all"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "eureka",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8761/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8761",
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "test",
+      "request": {
+        "auth": {
+          "type": "oauth2",
+          "oauth2": [
+            {
+              "key": "addTokenTo",
+              "value": "header",
+              "type": "string"
+            },
+            {
+              "key": "tokenName",
+              "value": "\nkeycloak-token",
+              "type": "string"
+            },
+            {
+              "key": "grant_type",
+              "value": "authorization_code_with_pkce",
+              "type": "string"
+            },
+            {
+              "key": "redirect_uri",
+              "value": "https://oauth.pstmn.io/v1/callback",
+              "type": "string"
+            },
+            {
+              "key": "authUrl",
+              "value": "http://localhost:8090/realms/fitness/protocol/openid-connect/auth",
+              "type": "string"
+            },
+            {
+              "key": "accessTokenUrl",
+              "value": "http://localhost:8090/realms/fitness/protocol/openid-connect/token",
+              "type": "string"
+            },
+            {
+              "key": "clientId",
+              "value": "fintness",
+              "type": "string"
+            },
+            {
+              "key": "scope",
+              "value": "openid",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/user/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "user",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

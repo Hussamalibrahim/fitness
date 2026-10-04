@@ -15,22 +15,31 @@ import java.util.List;
 @Builder
 @Document(collection = "Recommendation")
 public class Recommendation {
+
     @Id
     private String id;
+
     @Field(name = "activity_id")
     private String activityId;
+
     @Field(name = "user_id")
     private Long userId;
+
     @Field(name = "activity_type")
     private String activityType;
+
     @Field(name = "recommendation")
     private String recommendation;
+
     @Field(name = "improvements")
     private List<String> improvements;
+
     @Field(name = "suggestions")
     private List<String> suggestions;
+
     @Field(name = "safety")
     private List<String> safety;
+
     @CreatedDate
     @Field(name = "create-time")
     private LocalDateTime createTime;

@@ -1,6 +1,5 @@
 package com.h2lib.aiservice.controller;
 
-import com.h2lib.aiservice.model.Recommendation;
 import com.h2lib.aiservice.model.dto.RecommendationDto;
 import com.h2lib.aiservice.service.RecommendationService;
 import lombok.AllArgsConstructor;

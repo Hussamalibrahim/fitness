@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("api/user")
+@RequestMapping("/api/user")
 @AllArgsConstructor
 @SuppressWarnings({"JvmTaintAnalysis"})
 public class UserController {
@@ -27,12 +27,16 @@ public class UserController {
     public ResponseEntity<UserDto> register(@Valid @RequestBody RegisterRequest registerRequest) {
         return ResponseEntity.ok().body(userService.register(registerRequest));
     }
-    @GetMapping("{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<UserDto> getUserProfile(@Nullable @PathVariable Long userId) {
         return ResponseEntity.ok().body(userService.getUserProfile(userId));
     }
-    @GetMapping("{userId}/validate")
+    @GetMapping("/{userId}/validate")
     public ResponseEntity<Boolean> userValidate(@Nullable @PathVariable Long userId) {
         return ResponseEntity.ok().body(userService.userValidate(userId));
+    }
+    @GetMapping("/internal/id")
+    public ResponseEntity<Long> getUserIdByKeycloakId(@RequestHeader("X-KEYCLOAK-ID") String keycloakId) {
+        return ResponseEntity.ok(userService.findByKeycloakId(keycloakId));
     }
 }

@@ -21,8 +21,12 @@ public class ActivityController {
     private ActivityService activityService;
 
     @PostMapping("add")
-    public ResponseEntity<ActivityDto> addActivity(@RequestBody ActivityRequest activityRequest){
-        return ResponseEntity.ok(activityService.addActivity(activityRequest));
+    public ResponseEntity<ActivityDto> addActivity(
+            @RequestHeader("X-KEYCLOAK-ID") String keycloakId,
+            @RequestBody ActivityRequest activityRequest) {
+        return ResponseEntity.ok(
+                activityService.addActivity(activityRequest, keycloakId)
+        );
     }
 
     @GetMapping("all")
@@ -31,7 +35,7 @@ public class ActivityController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ActivityDto>> getUserActivities(@RequestHeader("X-USER-ID") Long userId){
+    public ResponseEntity<List<ActivityDto>> getUserActivities(@RequestHeader("X-USER-ID") String userId){
         return ResponseEntity.ok(activityService.getUserActivities(userId));
     }
     @GetMapping("{activityId}")

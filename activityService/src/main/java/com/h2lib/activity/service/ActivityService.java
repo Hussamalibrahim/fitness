@@ -6,11 +6,11 @@ import com.h2lib.activity.model.dto.ActivityRequest;
 import java.util.List;
 
 public interface ActivityService {
-    ActivityDto addActivity(ActivityRequest activityRequest);
+    ActivityDto addActivity(ActivityRequest activityRequest, String keycloakId);
 
     List<ActivityDto> getActivities();
 
-    List<ActivityDto> getUserActivities(Long userId);
+    List<ActivityDto> getUserActivities(String userId);
 
     ActivityDto getActivity(String activityId);
 }

@@ -9,7 +9,6 @@ import java.util.Map;
 
 @Data
 public class ActivityRequest {
-    private Long userId;
     private TypeActivity typeActivity;
     private Integer duration;
     private Integer caloriesBurned;

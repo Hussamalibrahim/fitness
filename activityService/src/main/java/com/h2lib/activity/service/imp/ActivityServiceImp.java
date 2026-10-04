@@ -27,35 +27,29 @@ public class ActivityServiceImp implements ActivityService {
     RabbitMQActivityProducer rabbitMQActivityProducer;
 
     @Override
-    public ActivityDto addActivity(ActivityRequest activityRequest) {
+    public ActivityDto addActivity(ActivityRequest activityRequest, String keycloakId) {
 
         if (activityRequest.getAdditionalMatrices() == null ||
                 activityRequest.getAdditionalMatrices().isEmpty()) {
             activityRequest.setAdditionalMatrices(new HashMap<>());
         }
-        boolean isUserValid = userValidateServiceImp.userValidate(activityRequest.getUserId());
-        if (!isUserValid) {
-            log.error("user validation failed in cant add activity: {}", activityRequest.getUserId());
-            throw new RuntimeException("user validation failed: " + activityRequest.getUserId());
-        }
 
+        Long userId = userValidateServiceImp.getUserIdByKeycloakId(keycloakId);
         Activity activity = new Activity();
-        activity.setUserId(activityRequest.getUserId());
+        activity.setUserId(userId);
         activity.setTypeActivity(activityRequest.getTypeActivity());
         activity.setDuration(activityRequest.getDuration());
         activity.setCaloriesBurned(activityRequest.getCaloriesBurned());
         activity.setTimeStart(LocalDateTime.now());
         activity.setAdditionalMatrices(activityRequest.getAdditionalMatrices());
 
-        // after save the activity send a
         Activity dBActivity = activityRepository.save(activity);
         try {
-        rabbitMQActivityProducer.sendMessage(dBActivity);
-
-        }catch (Exception e){
-            log.error("send message failed with rabbitMQ: {}", activityRequest.getUserId(),e);
+            rabbitMQActivityProducer.sendMessage(dBActivity);
+        } catch (Exception e) {log.error("send message failed with rabbitMQ: {}", userId, e);
         }
-        log.info("Activity have been save successfully: {}", activityRequest);
+
+        log.info("Activity has been saved successfully for user: {}", userId);
         return convertToDTO(dBActivity);
     }
 
@@ -68,8 +62,9 @@ public class ActivityServiceImp implements ActivityService {
     }
 
     @Override
-    public List<ActivityDto> getUserActivities(Long userId) {
-        boolean isUserValid = userValidateServiceImp.userValidate(userId);
+    public List<ActivityDto> getUserActivities(String keycloakId) {
+        Long userId = userValidateServiceImp.getUserIdByKeycloakId(keycloakId);
+        boolean isUserValid = userValidateServiceImp.userValidate(keycloakId);
         if (!isUserValid) {
             log.error("Unable to find user with id: {}", userId);
             throw new RuntimeException("user validation failed: " + userId);
